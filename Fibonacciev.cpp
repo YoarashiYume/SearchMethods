@@ -7,16 +7,14 @@ int fibonachiValue(int n)
 }
 int fibonaccievSearch(std::vector<double> arr, 	double key)
 {
-	std::vector<double> arrIn = arr;
-	std::sort(arrIn.begin(), arrIn.end());
 	int  currentNumberOfFibonachi = 0;
 	int  indexOffset = 0;
 	int index = 0;
 	bool isFind = false;
-	while (!isFind&& indexOffset < arrIn.size())
+	while (!isFind&& indexOffset < arr.size())
 	{
 		int currentFibonachiValue = fibonachiValue(currentNumberOfFibonachi) + indexOffset;
-		if (currentFibonachiValue >= arrIn.size())
+		if (currentFibonachiValue >= arr.size())
 		{
 			if (fibonachiValue(currentNumberOfFibonachi - 1) == 0)
 				break;
@@ -25,12 +23,12 @@ int fibonaccievSearch(std::vector<double> arr, 	double key)
 		}
 		else
 		{
-			if (arrIn.at(currentFibonachiValue) > key)
+			if (arr.at(currentFibonachiValue) > key)
 			{
 				indexOffset += fibonachiValue(currentNumberOfFibonachi - 1);
 				currentNumberOfFibonachi = 0;
 			}
-			else if (arrIn.at(currentFibonachiValue) == key)
+			else if (arr.at(currentFibonachiValue) == key)
 			{
 				index = currentFibonachiValue;
 				isFind = true;

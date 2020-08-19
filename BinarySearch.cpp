@@ -2,26 +2,24 @@
 
 int binarySearch(std::vector<double> arr, double key)
 {
-	std::vector<double> arrIn = arr;
-	std::sort(arrIn.begin(), arrIn.end());
 	int index = 0;
 	bool isFind = false;
-	int middle = arrIn.size() / 2;
-	while (arrIn.size() != 0 && !isFind)
+	int middle = arr.size() / 2;
+	while (arr.size() != 0 && !isFind)
 	{
-		if (key == arrIn.at(middle))
+		if (key == arr.at(middle))
 			isFind = true;
-		else if (arrIn.size() == 1 && arr.at(0) != key)
+		else if (arr.size() == 1 && arr.at(0) != key)
 			break;
-		else if (arrIn.at(middle) > key)
+		else if (arr.at(middle) > key)
 		{
-			arrIn.erase(arrIn.begin() + arrIn.size() / 2, arrIn.end());
+			arr.erase(arr.begin() + arr.size() / 2, arr.end());
 			continue;
 		}
 		else 
-			arrIn.erase(arrIn.begin(),arrIn.begin() + arrIn.size() / 2);
+			arr.erase(arr.begin(),arr.begin() + arr.size() / 2);
 		index += middle;
-		middle = arrIn.size() / 2;
+		middle = arr.size() / 2;
 	}
 	return isFind ? index : -1;
 }
